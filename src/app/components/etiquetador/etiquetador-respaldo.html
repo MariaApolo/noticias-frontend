@@ -1,0 +1,65 @@
+<app-principal></app-principal>
+<div class="container">
+
+    <div class="m-4 p-2">
+
+    <p>Bienvenido, usuario!</p>
+
+    </div>
+
+    <div class="center-div" style= "margin:2%" *ngIf="!no_data">
+
+        <div class="flexbox slider">
+            <p> ¿Se refieren estos dos titulares de noticias al <b>mismo acontecimiento</b>? <br> 
+                <span style="font-size: 1rem;">Selecciona las palabras que determinaron tu decisión.</span> <br>
+
+
+                    <span [style.background-color] = "color_1[i]  ? 'steelblue' : null" [style.color] = "color_1[i] ? 'white' : null" *ngFor="let s1 of (data[i].sentence1).split(' '); let i=index">
+                        <a class="word"  (click)="highlight(s1, 1, i)"> {{s1}} </a>
+                    </span>    
+
+                    <br> 
+
+                    <span [style.background-color] = "color_2[i]  ? 'steelblue' : null" [style.color] = "color_2[i] ? 'white' : null" *ngFor="let s2 of (data[i].sentence2).split(' '); let i=index" class="inline">
+                        <a class="word"  (click)="highlight(s2, 2, i)"> {{s2}} </a>
+                    </span>
+            </p>
+
+            <label>¿Qué porcentaje de certeza tienes respecto a tu respuesta?</label>
+            <div class="input-group mb-3">
+
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" value="100" min="0" max="100">
+                <div class="input-group-append">
+                  <span class="input-group-text">%</span>
+                </div>
+            </div>
+ 
+        </div>
+
+        <div class="row">
+            <div class="check-buttons">
+
+                <a class="next control" (click)= "next(data[i].id_output, 1);"><i class="fas fa-circle-check fa-5x"></i></a>
+                <a class="next control" (click)= "next(data[i].id_output, '');"><i class="fas fa-circle-chevron-right fa-5x"></i></a>
+                <a class="next control" (click)= "next(data[i].id_output, 0);"><i class="fas fa-circle-xmark fa-5x"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="center-div" *ngIf="no_data">
+
+      <div class="flexbox slider">
+          <p> La encuesta ha finalizado. Muchas gracias por tu colaboración! </p>
+
+      </div>
+
+
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>

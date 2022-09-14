@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    font: normal 10px !important;
+    font-family: 'Roboto Slab', serif !important;
+    color: dimgray !important;
+    background-color: #D0E0FB !important;
+    display:flex;
+    flex-direction: column;
+} 
+
+.center-div {
+    margin: auto;
+    width: 90%;
+    border: 1px solid rgba(142, 162, 192, 0.90);
+    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    background-color: white;
+    
+  }

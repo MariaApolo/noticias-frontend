@@ -1,0 +1,30 @@
+
+
+.logo-img {
+    height: auto;
+    width: 40%;
+    float:left;
+    margin-left: 5%;
+}
+
+#wrapper-navbar {
+    padding-top:2%;
+    padding-bottom: 2%;
+    /*border-bottom: solid #bfc1c2;*/
+    box-shadow: 0px 0px 10px 3px rgba(142, 162, 192, 0.3);
+    background-color: white;
+
+}
+
+.nav-link {
+    width: 8rem;
+    color: white !important;
+}
+
+/*
+#navbarNav {
+    float: right;
+    margin-right: 5%;
+}
+
+*/

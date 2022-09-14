@@ -1,0 +1,34 @@
+<app-principal></app-principal>
+<div class="center-div">
+
+    <h4>Registro</h4>
+    <div *ngIf="succes_alert" class="alert alert-success" role="alert">
+        El formulario ha sido enviado exitosamente!
+      </div>
+    <form #f="ngForm" (ngSubmit)="OnSubmit(f)">
+        <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input name = "email" type="email" class="form-control" id="email" placeholder="Ingrese su email" [(ngModel)]="data.email" required>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input name = "nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" [(ngModel)]="data.nombre" required>
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+        <div class="form-group">
+        <label for="exampleInputPassword1">Contraseña</label>
+        <input name="pass" type="password" class="form-control" id="pass" placeholder="Ingrese contraseña" [(ngModel)]="data.pass">
+        </div>
+        <!--
+        <div class="form-group">
+            <label for="exampleInputPassword1">Repita su contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+        <div class="form-group form-check">
+        -->
+        <button type="submit" class="btn btn-primary">Registrarme</button>
+    </form>
+</div>
+
+<app-footer></app-footer>
