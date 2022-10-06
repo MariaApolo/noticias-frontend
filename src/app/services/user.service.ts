@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(    private http: HttpClient, 
                   private jwtHelper: JwtHelperService) { 
-    this.BASE_URL_API = "http://localhost:3000";
+    this.BASE_URL_API = environment.URL_API;
   }
 
   //setLoggedIn(value: boolean){
@@ -41,11 +41,11 @@ export class UserService {
   }
 
   Register(data:any): Observable<any> {
-    return this.http.post(this.BASE_URL_API + "/api/users/register", data);
+    return this.http.post(this.BASE_URL_API + "/users/register", data);
   }
 
   Login(data:any): Observable<any> {  //getuserdetail
-    return this.http.post(this.BASE_URL_API + "/api/users/login", data);
+    return this.http.post(this.BASE_URL_API + "/users/login", data);
   }
 
   

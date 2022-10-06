@@ -10,14 +10,14 @@ export class OutputService {
   private BASE_URL_API: string = '';
 
   constructor(    private http: HttpClient   ) { 
-    this.BASE_URL_API = "http://localhost:3000";
+    this.BASE_URL_API = environment.URL_API;
   }
 
   getOutputs(): Observable<any> {
-    return this.http.get(this.BASE_URL_API + "/api/outputs");
+    return this.http.get(this.BASE_URL_API + "/outputs");
   }
 
   createEtiqueta(data:any): Observable<any> {
-    return this.http.post(this.BASE_URL_API + "/api/outputs/etiqueta", data);
+    return this.http.post(this.BASE_URL_API + "/outputs/etiqueta", data);
   }
 }
