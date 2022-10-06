@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+html {height:100%} 
+
 body {
     font-family: 'Roboto Slab', serif !important;
     color: #6C757D !important;
-    display:flex;
-    flex-direction: column;
+    min-height:100%
 } 
+
+
+
 
 .container{
     max-width: 50rem !important;

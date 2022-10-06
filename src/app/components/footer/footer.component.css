@@ -18,14 +18,7 @@ footer {
 */
 
 footer{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: #111111 !important;
-  height: auto;
-  width: 100vw;
-  padding-top: 40px;
   color: #fff !important; 
 }
 
@@ -35,6 +28,7 @@ footer{
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  padding-top: 2rem;
 }
 
 .footer-content h3{
@@ -79,5 +73,5 @@ footer{
 }
 
 .socials a:hover i{
-  color: aqua;
+  color: #16BCFC;
 }
