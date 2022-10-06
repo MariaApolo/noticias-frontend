@@ -1,21 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    font: normal 10px !important;
     font-family: 'Roboto Slab', serif !important;
-    color: dimgray !important;
-    background-color: #D0E0FB !important;
+    color: #6C757D !important;
     display:flex;
     flex-direction: column;
 } 
 
+.container{
+    max-width: 50rem !important;
+}
+
 .center-div {
-    margin: auto;
-    width: 90%;
-    border: 1px solid rgba(142, 162, 192, 0.90);
-    padding: 10px;
-    margin-top: 5%;
-    margin-bottom: 10%;
+    margin-top: 5rem !important;
+    margin-bottom: 5rem !important;
+
+    width: 100%;
+    padding: 3rem;
     background-color: white;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1); 
+    border-radius: 0.5em;
+    border-color: #F1F2F2;
+    border-width: 1px;
+
     
   }
+
+.btn {
+    width: fit-content;
+}
+
+
+.link {
+    color: #16BCFC !important;
+
+}
+
+.link:hover {
+    font-weight: bolder;
+    text-decoration: underline !important;
+}
+/*
+h4 {
+font-size: 18pt;
+}
+
+h3 {
+font-size: 20pt;
+}
+
+p {
+    font-size: 14pt;
+
+}
+*/

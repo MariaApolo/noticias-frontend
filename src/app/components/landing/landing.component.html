@@ -1,65 +1,67 @@
 <app-principal></app-principal>
 
 <div class="landing">
-    <div class="section-1">
-        <div class="row">
-            <div class="col-sm-8">
-                <p>Bienvenid@ a la plataforma etiquetadora! </p>
-                <p style="font-size:2rem"> Descripción</p>
-                <div class="col-sm-3 pl-0" >
+    <div class="section section-1 py-6">
+
+            <div class="column-3">
+                <p class="title">Encuesta de similaridad de noticias</p>
+                <p style="font-size:1.2rem; padding: 0.5rem 0rem 0.5rem 0rem;">Responde esta encuesta y estarás contribuyendo al desarrollo de modelos predictivos.</p>
+                <div>
                     <a class="nav-link btn btn-primary" id="start" href="/etiquetador"> Comienza</a>
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="column-1">
                 <img class="landing-img" src="assets/images/photo1.png" alt="Mountain">
             </div>
+
+    </div>
+
+    <div class="section section-2 my-5" style="padding-top:0rem !important;">
+        <div class="flex-container">
+            <h4 class="text-center my-5">Si tienes dudas y quisieras prepararte para partir, 
+                puedes ver el siguiente <a class="link" href="https://www.youtube.com/watch?v=tgbNymZ7vqY&ab_channel=TheMuppets">video</a> con un instructivo paso a paso y ejemplos de prueba.</h4>
+
+            <iframe width="600" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
         </div>
     </div>
 
-    <div class="section-2">
-        <div class="row">
-            <div class="col-sm-4">
-                <img class="landing-img" src="assets/images/photo2.png" alt="Mountain">
-            </div>
-            <div class="col-sm-8 pt-5" style="text-align:justify">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                    Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
-                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, 
-                    venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. 
-                    Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, 
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. 
-                    Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. 
-                </p>
+    <div class="section-3 my-5">
 
-                <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>
-                <ng-template #mymodal let-modal>
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
-                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      This is example from Tutsmake.com
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
-                    </div>
-                  </ng-template>
+        <div class="s3-elem">
+            <img class="s3-img" src = "assets/images/progress.svg"> 
+            <p class="s3-text">En cada paso se irá registrando tu <b>progreso</b>.</p>
 
-            </div>
+        </div>
+
+        <div class="s3-elem">
+            <img class="s3-img" src = "assets/images/tracking.svg"> 
+            <p class="s3-text">Si no sabes qué responder, puedes <b>pasar</b> a la siguiente pregunta.</p>
+
+        </div>
+
+        <div class="s3-elem">
+            <img class="s3-img" src = "assets/images/completing.svg"> 
+            <p class="s3-text">Puedes <b>finalizar</b> el formulario en cualquier momento.</p>
+
         </div>
     </div>
 
-    <div class="section-3">
-        <div class="row">
-            <div class="col-sm-8">
-            </div>
-            <div class="col-sm-4"></div>
+
+    <div class="section section-4 my-5">
+        <div>
+            <p style="font-size:1.5rem;"><b>Sobre los datos</b></p>
+            <p>La información recopilada en esta encuesta tendrá el objetivo de desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias. 
+                Además, recuerda que esta encuesta es totalmente <b>voluntaria, confidencial y no tiene ningún riesgo asociado</b>. 
+                
+                Si tienes <b>dudas</b> o inquietudes, no dudes en contactarnos al siguiente correo: <br><br>
+
+                <a class="link" href ="mailto:maria.apolo@sansano.usm.cl?subject = Encuesta_Noticias&body = Message"> >Contacto</a>
+
+            </p>
         </div>
+        <img src = "assets/images/nature.svg">
     </div>
 </div>
 

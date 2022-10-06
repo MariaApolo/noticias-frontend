@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AnyForUntypedForms } from '@angular/forms';
 import { OutputService } from 'src/app/services/output.service';
+import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
-
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-etiquetador',
@@ -14,32 +15,42 @@ export class EtiquetadorComponent implements OnInit {
   public data: any;
   public i: any;
   public id_user:any;
-  public no_data: boolean = false;
+  public no_data: number = 0;  /*0 = no_consent  1 = encuesta 2 = finished*/
   public hl_words_1:any;
   public hl_words_2:any;
   public color_1: any;
   public color_2: any;
   public selection: any;
+  public consent: any;
+  public user:any = {
+    email: '',
+    nombre: '',
+    pass: ''
+  };
+  title = 'appBootstrap';
+  closeResult: string = '';
 
-  constructor( private OutputService: OutputService) { 
+  constructor( private OutputService: OutputService,
+               private UserService: UserService,
+               private modalService: NgbModal) { 
 
     this.i = 0;
-    this.id_user =1; //por defecto maria
+    this.id_user; //por defecto maria
     this.hl_words_1 = [];
     this.hl_words_2 = [];
     this.selection = "";
+
     
   }
 
   ngOnInit(): void {
 
     {
-      //Aquí se realiza el llamado al servicio para obtener la data y luego generar el gráfico
+      //Aquí se realiza el llamado al servicio para obtener los pares a consultar
       this.OutputService.getOutputs().subscribe(data => {
         this.data = data;  
         this.color_1 = Array(data[0].sentence1.split(' ').length).fill(false);
         this.color_2 = Array(data[0].sentence2.split(' ').length).fill(false);
-
 
       })
     }
@@ -63,8 +74,8 @@ export class EtiquetadorComponent implements OnInit {
     })
 
     if(this.i == (this.data.length -1) ){
-      this.no_data = true;
-      console.log('boolean:', this.no_data);
+      this.no_data = 2; 
+      console.log('estado:', this.no_data);
       this.i = 0;
     }
 
@@ -102,6 +113,50 @@ export class EtiquetadorComponent implements OnInit {
 
      
     }
+  }
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  } 
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  valuechange(checked:any){
+    this.consent = checked;
+  }
+
+  startForm(){
+
+    this.user = {
+      email: 'anonimo@anonimo.cl',
+      nombre: 'user_anonimo',
+      pass: '123'
+    };
+
+    try{
+      this.UserService.Register(this.user).subscribe(res => {
+        this.id_user = res.id_user;
+        console.log(this.id_user);
+        this.no_data = 1;
+        console.log("Cambio de estado a inicio de formulario");
+      })
+    }
+    catch (error) {
+      console.log("error");
+    }
+
   }
 
 

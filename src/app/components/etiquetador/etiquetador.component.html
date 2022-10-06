@@ -1,29 +1,65 @@
 <app-principal></app-principal>
 <div class="container">
 
-    <div class="m-4 p-2">
 
-    <p>Bienvenido, usuario!</p>
+    <div class="center-div" style= "margin:2%" *ngIf="no_data ==  0">
 
+      <div class="consentimiento">
+      <h3 style="font-size: 1.5rem; font-weight: bold;">Consentimiento Informado</h3>
+      <br>
+
+          <b>Encuesta:</b> "Similaridad de noticias" <br> <br>
+
+          Te damos la bienvenida a la encuesta “Similaridad de noticias” del Instituto Milenio Fundamentos de los Datos. Por favor, <b>lee atentamente las siguientes instrucciones.</b>
+          <div class="my-3">
+            <ul>
+            
+            <li>El siguiente cuestionario tiene 100 preguntas, sin embargo, puedes terminar de responder cuando tú quieras (haciendo click en la "X" para finalizar encuesta). Toda la información que nos puedas aportar será de gran ayuda.</li>
+            
+            <li>Tus respuestas serán absolutamente anónimas, y los resultados podrás conocerlos más adelante a través de las redes del Instituto Milenio Fundamentos de los Datos.</li>
+
+            <li>Si deseas revisar material de ayuda, puedes ver el siguiente video. </li>
+
+            <li>Antes de comenzar, lee atentamente el <a class="link" (click)="open(mymodal)">consentimiento</a> y selecciona con un ticket la casilla si aceptas lo mencionado en dicho documento.</li>
+            
+            <li>Selecciona el botón “Comenzar” si autorizas el uso de tus respuestas para nuestro análisis.</li> 
+
+            </ul>
+          </div>
+
+
+      <div class="form-check my-3">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="document.getElementById('startForm').disabled=!this.checked;">
+          <label class="form-check-label" for="flexCheckChecked">
+            Acepto los términos y condiciones de la encuesta. 
+          </label>
+      </div>
+       <div style="display: flex; flex-direction: row-reverse;">
+        <button type="button" class="btn btn-primary" id="startForm" (click)="startForm()" disabled> Comenzar </button> <!--Default disabled-->
+      </div>
+
+      </div>
     </div>
 
-    <div class="center-div" *ngIf="!no_data">
+    <div class="center-div" *ngIf="no_data == 1">
+        <div class="test-header">
 
+        <a href="/"><i class="fa-regular fa-rectangle-xmark fa-2xl"></i></a>
+        <p style="font-weight: bold; font-size: 1.3rem;">
+          {{i + 1}}/100
+        </p>
+        </div>
         <div class="flexbox slider">
-            <p> ¿Se refieren estos dos titulares de noticias al <b>mismo acontecimiento</b>? <br> 
-                <span style="font-size: 1rem;">Selecciona las palabras que determinaron tu decisión.</span> <br>
+            <p style="font-size: 1.2rem;"> ¿Se refieren estos dos titulares de noticias al <b>mismo acontecimiento</b>? <br> 
+                <!--<span style="font-size: 1rem;">Selecciona las palabras que determinaron tu decisión.</span> <br> !-->
+
+                  <p style="font-size: 1.1rem;">1 - {{data[i].sentence1}} </p>
 
 
-                    <span [style.background-color] = "color_1[i]  ? 'steelblue' : null" [style.color] = "color_1[i] ? 'white' : null" *ngFor="let s1 of (data[i].sentence1).split(' '); let i=index">
-                        <a class="word"  (click)="highlight(s1, 1, i)"> {{s1}} </a>
-                    </span>    
+              <br> 
 
-                    <br> 
+                  <p style="font-size: 1.1rem;">2 - {{data[i].sentence2}} </p>
 
-                    <span [style.background-color] = "color_2[i]  ? 'steelblue' : null" [style.color] = "color_2[i] ? 'white' : null" *ngFor="let s2 of (data[i].sentence2).split(' '); let i=index" class="inline">
-                        <a class="word"  (click)="highlight(s2, 2, i)"> {{s2}} </a>
-                    </span>
-            </p>
             <!--
             <label>¿Qué porcentaje de certeza tienes respecto a tu respuesta?</label>
             <div class="input-group mb-3">
@@ -66,22 +102,25 @@
                 <a class="next control" (click)= "next(data[i].id_output, 0);"><i class="fas fa-circle-xmark fa-5x"></i></a>
                 -->
             </div>
-            <span style="display:flex; justify-content:flex-end">
-                <button type="button" class="btn btn-primary" style="max-width: 25%; margin-left: 2%; margin-right:2%; margin-bottom: 2%; float:right;" (click)= "next(data[i].id_output, selection)">Siguiente</button>
-            </span>
+            <div style="display: flex; flex-direction: row-reverse; column-gap: 1rem;">
+              <button type="button" class="btn btn-primary" (click)= "next(data[i].id_output, selection)">Siguiente</button>
+              <button type="button" class="btn btn-outline-primary" (click)= "next(data[i].id_output, '')">Saltar</button>
+            </div>
+                
+ 
         </div>
 
     </div>
 
-    <div class="center-div" *ngIf="no_data">
+    <div class="center-div" *ngIf="no_data == 2">
 
       <div class="flexbox slider">
-          <p> La encuesta ha finalizado. Muchas gracias por tu colaboración! </p>
+          <p> La encuesta ha finalizado. ¡Muchas gracias por su colaboración! </p>
 
       </div>
-      <span style="display:flex; justify-content:flex-end">
-        <a type="button" class="btn btn-primary" style="max-width: 25%; margin-left: 2%; margin-right:2%; margin-bottom: 2%; float:right;" href="/">Volver</a>
-        </span>
+      <div style="display: flex; flex-direction: row-reverse;">
+        <a type="button" class="btn btn-primary" href="/">Volver</a>
+      </div>
 
 
   </div>
@@ -90,6 +129,39 @@
 </div>
 
 <app-footer></app-footer>
+
+<!-- Modal consentimiento -->
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Consentimiento informado</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+
+    <p>Usted ha sido invitado(a) a participar en la encuesta “Noticias” del Instituto Milenio Fundamentos de los Datos. El objetivo es desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias. Para participar en esta estudio, es importante que considere la siguiente información:  </p>
+    <ul>
+    <li><b>Participación:</b> Su participación consistirá en responder un cuestionario web a través de la plataforma noticias.imfd.cl, hospedada en servidores del instituto. 
+    La encuesta consiste en mostrar al encuestado una serie de pares de titulares de noticias reales y que éste identifique si los titulares corresponden a exactamente el mismo evento, 
+    corresponden a eventos distintos o si no corresponden al mismo evento pero se refieren a tópicos estrechamente relacionados.</li>
+
+    <li><b>Riesgos:</b> Las respuestas de los informantes, además de ser anónimas, no contienen datos privados o sensibles. Por tanto, se considera que no existen riesgos asociados. </li>
+    <li><b>Beneficios:</b> Usted no recibirá ningún beneficio directo por participar en este estudio. No obstante, su participación permitirá generar información valiosa para el desarrollo de modelos predictivos de similitud semántica en sitios de noticias en inglés.</li>
+    <li><b>Voluntariedad:</b> Su participación es absolutamente voluntaria. Usted tendrá la libertad de contestar las preguntas que desee, como también de detener su participación en cualquier momento que lo desee. Esto no implicará ningún perjuicio para usted.</li>
+    <li><b>Confidencialidad:</b> Todas sus respuestas serán anónimas. Las presentaciones y publicaciones de este estudio, no contendrán datos confidenciales de sus informantes.</li>
+    <li><b>Conocimiento de los resultados:</b> Usted tiene derecho a conocer los resultados de esta investigación. Para ello, una vez estén listos podrá conocerlos directamente a través del sitio web noticias.imfd.cl</li>
+    <li>Si requiere mayor información, o comunicarse por cualquier motivo relacionado con este estudio, puede contactar a María José Apolo en el correo maria.apolo@sansano.usm.cl. </li>
+
+    </ul>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Entendido</button>
+  </div>
+</ng-template>
 
 
 
