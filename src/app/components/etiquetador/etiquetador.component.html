@@ -44,7 +44,7 @@
     <div class="center-div" *ngIf="no_data == 1">
         <div class="test-header">
 
-        <a href="/"><i class="fa-regular fa-rectangle-xmark fa-2xl"></i></a>
+        <a class="close" (click)="open(mymodal2)"><i class="fa-regular fa-rectangle-xmark fa-xl"></i></a>
         <p style="font-weight: bold; font-size: 1.3rem;">
           {{i + 1}}/100
         </p>
@@ -78,20 +78,20 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio"  [value]="1" name="selection" [(ngModel)]="selection">
                     <label class="form-check-label" for="exampleRadios1">
-                      Se refieren al mismo acontecimiento
+                      Se refieren al mismo acontecimiento.
                     </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio"  [value]="2" name="selection" [(ngModel)]="selection">
                     <label class="form-check-label" for="exampleRadios2">
-                      No se refieren al mismo acontecimiento
+                      No se refieren al mismo acontecimiento.
                     </label>
                 </div>
                 
                 <div class="form-check">
                     <input class="form-check-input" type="radio"  [value]="0" name="selection" [(ngModel)]="selection">
                     <label class="form-check-label" for="exampleRadios2">
-                      Son dos acontecimientos distintos, pero están relacionados
+                      Son dos acontecimientos distintos, pero están relacionados.
                     </label>
                 </div>
 
@@ -137,9 +137,10 @@
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Consentimiento informado</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <a class="close" (click)="modal.dismiss('Cross click')"><i class="fa-regular fa-rectangle-xmark fa-lg"></i></a>
+    <!--<button type="button" class="close" aria-label="Close" >
       <span aria-hidden="true">×</span>
-    </button>
+    </button>-->
   </div>
   <div class="modal-body">
     
@@ -165,5 +166,23 @@
   </div>
 </ng-template>
 
+<!-- Modal cierre -->
 
+<ng-template #mymodal2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Finalizar</h4>
+    <a class="close" (click)="modal.dismiss('Cross click')"><i class="fa-regular fa-rectangle-xmark fa-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    
+    <p> ¿Está seguro(a) de que desea finalizar el formulario? <br> <br> 
+      
+      Una vez finalizado, <b>no podrá retomar desde donde lo dejó.</b></p>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Cross click')" [routerLink]="['/']">Finalizar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Cancelar</button>
+  </div>
+</ng-template>
 

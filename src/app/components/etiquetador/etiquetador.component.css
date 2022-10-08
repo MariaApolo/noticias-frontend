@@ -108,3 +108,7 @@ body {
   align-items: flex-start;
   padding-bottom: 1rem;
 }
+
+.close:hover {
+  color: #16BCFC !important;
+}
