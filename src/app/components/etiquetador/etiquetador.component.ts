@@ -4,6 +4,7 @@ import { OutputService } from 'src/app/services/output.service';
 import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-etiquetador',
@@ -22,6 +23,7 @@ export class EtiquetadorComponent implements OnInit {
   public color_2: any;
   public selection: any;
   public consent: any;
+  public comment:any;
   public user:any = {
     email: '',
     nombre: '',
@@ -32,7 +34,8 @@ export class EtiquetadorComponent implements OnInit {
 
   constructor( private OutputService: OutputService,
                private UserService: UserService,
-               private modalService: NgbModal) { 
+               private modalService: NgbModal,
+               private router: Router,) { 
 
     this.i = 0;
     this.id_user; //por defecto maria
@@ -70,8 +73,9 @@ export class EtiquetadorComponent implements OnInit {
       console.log(res);
       this.hl_words_1 = [];
       this.hl_words_2 = [];
-
+      this.selection = ''
     })
+
 
     if(this.i == (this.data.length -1) ){
       this.no_data = 2; 
@@ -159,6 +163,21 @@ export class EtiquetadorComponent implements OnInit {
 
   }
 
-
+  sendComment(){
+    const body = {
+      id_user: this.id_user,
+      comment_text: this.comment,
+    };
+    try{ 
+      this.OutputService.createComment(body).subscribe(res => {
+        console.log("Formulario enviado");
+        this.router.navigateByUrl('/')
+      })
+    }
+    catch (error) {
+      console.log("error");
+    }
+    
+  }
 
 }

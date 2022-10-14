@@ -20,4 +20,8 @@ export class OutputService {
   createEtiqueta(data:any): Observable<any> {
     return this.http.post(this.BASE_URL_API + "/outputs/etiqueta", data);
   }
+
+  createComment(data:any): Observable<any> {
+    return this.http.post(this.BASE_URL_API + "/outputs/comment", data);
+  }
 }
