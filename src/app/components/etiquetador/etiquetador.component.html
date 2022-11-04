@@ -196,7 +196,7 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Cross click')" [routerLink]="['/']">Finalizar</button>
+    <button type="button" class="btn btn-outline-primary" (click)="finalizar(); modal.dismiss('Cross click');" [routerLink]="['/etiquetador']">Finalizar</button>
     <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Cancelar</button>
   </div>
 </ng-template>

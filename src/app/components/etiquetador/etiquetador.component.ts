@@ -188,4 +188,8 @@ export class EtiquetadorComponent implements OnInit {
     
   }
 
+  finalizar() {
+    this.no_data = 2;
+  }
+
 }
