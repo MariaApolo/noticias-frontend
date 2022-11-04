@@ -14,7 +14,9 @@
           <div class="my-3">
             <ul>
             
-            <li>El siguiente cuestionario tiene 100 preguntas, sin embargo, puedes terminar de responder cuando tú quieras (haciendo click en la "X" para finalizar encuesta). Toda la información que nos puedas aportar será de gran ayuda.</li>
+            <li>El siguiente cuestionario tiene un máximo de 100 preguntas, sin embargo, puedes terminar de responder cuando tú quieras (haciendo click en la "X" para finalizar encuesta). Toda la información que nos puedas aportar será de gran ayuda.</li>
+
+            <li>Ten en consideración que los titulares de noticias consultados no están traducidos, por tanto es requisito manejar el idioma <b>inglés</b> para poder comprenderlos y responder.</li>
             
             <li>Tus respuestas serán absolutamente anónimas, y los resultados podrás conocerlos más adelante a través de las redes del Instituto Milenio Fundamentos de los Datos.</li>
 
@@ -28,14 +30,23 @@
           </div>
 
 
-      <div class="form-check my-3">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="document.getElementById('startForm').disabled=!this.checked;">
-          <label class="form-check-label" for="flexCheckChecked">
-            Acepto los términos y condiciones de la encuesta. 
-          </label>
+      <div class="form-check my-3" style="display: flex; flex-direction: column">
+          <div>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click)="changeConsent()">
+            <label class="form-check-label" for="flexCheckChecked"> 
+              He leído el consentimiento informado. 
+            </label>
+          </div>
+
+          <div> 
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click) = "changeTerms()">
+            <label class="form-check-label" for="flexCheckChecked" >
+              Acepto los términos y condiciones de la encuesta. 
+            </label>
+          </div>
       </div>
        <div style="display: flex; flex-direction: row-reverse;">
-        <button type="button" class="btn btn-primary" id="startForm" (click)="startForm()" disabled> Comenzar </button> <!--Default disabled-->
+        <button type="button" class="btn btn-primary" id="startForm" (click)="startForm()" [disabled] = "terms==false || consent==false"> Comenzar </button> <!--Default disabled-->
       </div>
 
       </div>
@@ -53,10 +64,8 @@
             <p style="font-size: 1.2rem;"> ¿Se refieren estos dos titulares de noticias al <b>mismo acontecimiento</b>? <br> 
                 <!--<span style="font-size: 1rem;">Selecciona las palabras que determinaron tu decisión.</span> <br> !-->
 
-                  <p style="font-size: 1.1rem;">1 - {{data[i].sentence1}} </p>
+                  <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">1 - {{data[i].sentence1}} </p>
 
-
-              <br> 
 
                   <p style="font-size: 1.1rem;">2 - {{data[i].sentence2}} </p>
 
@@ -102,7 +111,7 @@
                 <a class="next control" (click)= "next(data[i].id_output, 0);"><i class="fas fa-circle-xmark fa-5x"></i></a>
                 -->
             </div>
-            <div style="display: flex; flex-direction: row-reverse; column-gap: 1rem;">
+            <div style="display: flex; flex-direction: row-reverse; column-gap: 1rem; margin-top: 1rem;">
               <button type="button" class="btn btn-primary" (click)= "next(data[i].id_output, selection)">Siguiente</button>
               <button type="button" class="btn btn-outline-primary" (click)= "next(data[i].id_output, '')">Saltar</button>
             </div>
@@ -127,7 +136,7 @@
       </div>
       <div style="display: flex; flex-direction: row-reverse; column-gap: 1rem;">
         <button type="button" class="btn btn-primary" id="sentForm" (click)="sendComment(); open(sentForm)">Enviar comentario</button>
-        <button type="button" class="btn btn-outline-primary" href="/">Ir a Inicio</button>
+        <button type="button" class="btn btn-outline-primary" [routerLink]="['/']">Ir a Inicio</button>
       </div>
 
 

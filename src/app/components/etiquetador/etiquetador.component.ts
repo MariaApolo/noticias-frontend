@@ -23,6 +23,7 @@ export class EtiquetadorComponent implements OnInit {
   public color_2: any;
   public selection: any;
   public consent: any;
+  public terms: any;
   public comment:any;
   public user:any = {
     email: '',
@@ -49,6 +50,8 @@ export class EtiquetadorComponent implements OnInit {
   ngOnInit(): void {
 
     {
+      this.terms = false;
+      this.consent = false;
       //Aquí se realiza el llamado al servicio para obtener los pares a consultar
       this.OutputService.getOutputs().subscribe(data => {
         this.data = data;  
@@ -137,9 +140,14 @@ export class EtiquetadorComponent implements OnInit {
     }
   }
 
-  valuechange(checked:any){
-    this.consent = checked;
+  changeConsent(){
+    this.consent = !this.consent;
   }
+
+  changeTerms(){
+    this.terms = !this.terms;
+  }
+
 
   startForm(){
 
