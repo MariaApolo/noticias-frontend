@@ -13,8 +13,12 @@
           Te damos la bienvenida a la encuesta “Similitud de noticias” del Instituto Milenio Fundamentos de los Datos. Por favor, <b>lee atentamente las siguientes instrucciones.</b>
           <div class="my-3">
             <ul>
+
+            <li>El objetivo de esta encuesta es desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias.</li>
+
+            <li>El siguiente cuestionario tiene un máximo de {{data.length}} preguntas, sin embargo, puedes terminar de responder cuando tú quieras (haciendo click en la "X" para finalizar encuesta). Toda la información que nos puedas aportar será de gran ayuda.</li>
             
-            <li>El siguiente cuestionario tiene un máximo de 100 preguntas, sin embargo, puedes terminar de responder cuando tú quieras (haciendo click en la "X" para finalizar encuesta). Toda la información que nos puedas aportar será de gran ayuda.</li>
+            <li>Haciendo click en "Saltar" puedes omitir una pregunta en caso de que no tengas el contexto para responderla. </li>
 
             <li>Ten en consideración que los titulares de noticias consultados no están traducidos, por tanto es requisito manejar el idioma <b>inglés</b> para poder comprenderlos y responder.</li>
             
@@ -57,17 +61,16 @@
 
         <a class="close" (click)="open(mymodal2)"><i class="fa-regular fa-rectangle-xmark fa-xl"></i></a>
         <p style="font-weight: bold; font-size: 1.3rem;">
-          {{i + 1}}/100
+          {{i + 1}}/{{data.length}}
         </p>
         </div>
         <div class="flexbox slider">
             <p style="font-size: 1.2rem;"> ¿Se refieren estos dos titulares de noticias al <b>mismo acontecimiento</b>? <br> 
                 <!--<span style="font-size: 1rem;">Selecciona las palabras que determinaron tu decisión.</span> <br> !-->
 
-                  <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">1 - {{data[i].sentence1}} </p>
+                  <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">1 - {{data[i].sentence1}} <br>
 
-
-                  <p style="font-size: 1.1rem;">2 - {{data[i].sentence2}} </p>
+                  2 - {{data[i].sentence2}} </p>
 
             <!--
             <label>¿Qué porcentaje de certeza tienes respecto a tu respuesta?</label>

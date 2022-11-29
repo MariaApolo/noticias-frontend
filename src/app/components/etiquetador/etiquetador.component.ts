@@ -54,7 +54,9 @@ export class EtiquetadorComponent implements OnInit {
       this.consent = false;
       //Aquí se realiza el llamado al servicio para obtener los pares a consultar
       this.OutputService.getOutputs().subscribe(data => {
-        this.data = data;  
+        this.data = data.sort( () => Math.random() - 0.5); 
+        console.log(data);
+
         this.color_1 = Array(data[0].sentence1.split(' ').length).fill(false);
         this.color_2 = Array(data[0].sentence2.split(' ').length).fill(false);
 
