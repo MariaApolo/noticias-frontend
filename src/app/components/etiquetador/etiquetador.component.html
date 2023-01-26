@@ -8,27 +8,40 @@
       <h3 style="font-size: 1.5rem; font-weight: bold;">Consentimiento Informado</h3>
       <br>
 
-          <b>Encuesta:</b> "Similitud de noticias" <br> <br>
+          <b>Investigación:</b> "Similitud de noticias en inglés" <br> <br>
 
-          Te damos la bienvenida a la encuesta “Similitud de noticias” del Instituto Milenio Fundamentos de los Datos. Por favor, <b>lee atentamente las siguientes instrucciones.</b>
+          Te damos la bienvenida al estudio “Similitud de noticias”, de la línea de investigación PE4 Estructuras Robustas de Información, del Instituto Milenio Fundamentos de los Datos. La información recopilada tiene como objetivo estudiar si los modelos de inteligencia artificial son capaces de distinguir el grado de similitud semántica entre distintos titulares de noticias en inglés, de la misma manera que lo hace un ser humano. Para lograrlo, necesitamos primero construir una base de datos con las respuestas de las personas, que luego compararemos con los resultados generados ante la misma tarea por modelos IA existentes. 
+
+          <br><br> Estamos trabajando con noticias en inglés, porque es el idioma en el que están desarrollados la mayor cantidad de modelos que queremos analizar. Esperamos con esto sentar las bases para estudiar, a futuro, modelos en idioma español.
+          
+          <br><br> El cuestionario se basa en titulares de noticias en inglés recopilados de las páginas de medios de comunicación en Facebook y Twitter. 
+          <br><br> Por favor, <b>lee atentamente las siguientes instrucciones.</b>
           <div class="my-3">
             <ul>
 
-            <li>El objetivo de esta encuesta es desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias.</li>
+            <li>El objetivo del estudio es desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias en inglés.</li>
 
-            <li>El siguiente cuestionario tiene un máximo de {{data.length}} preguntas, sin embargo, puedes terminar de responder cuando tú quieras (haciendo click en la "X" para finalizar encuesta). Toda la información que nos puedas aportar será de gran ayuda.</li>
+            <li>Puedes responder la cantidad de preguntas que desees. Si bien el cuestionario está compuesto por un máximo de {{data.length}} preguntas, puedes terminar cuando tú quieras (haciendo clic en la "X" para finalizar). Toda la información que nos puedas aportar será de gran ayuda.</li>
             
-            <li>Haciendo click en "Saltar" puedes omitir una pregunta en caso de que no tengas el contexto para responderla. </li>
+            <li>Haciendo clic en "Saltar" puedes omitir una pregunta en caso de que no tengas el contexto para responderla. </li>
 
-            <li>Ten en consideración que los titulares de noticias consultados no están traducidos, por tanto es requisito manejar el idioma <b>inglés</b> para poder comprenderlos y responder.</li>
+            <li>Ten en consideración que los titulares de noticias consultados no están traducidos, por tanto, es requisito manejar el idioma inglés para poder comprenderlos y responder.</li>
             
-            <li>Tus respuestas serán absolutamente anónimas, y los resultados podrás conocerlos más adelante a través de las redes del Instituto Milenio Fundamentos de los Datos.</li>
+            <li>Tus respuestas serán absolutamente anónimas. </li>
+
+            <li>Los resultados podrás conocerlos más adelante a través de las redes del Instituto Milenio Fundamentos de los Datos.</li>
 
             <li>Si deseas revisar material de ayuda, puedes ver el siguiente <a href="https://www.youtube.com/watch?v=jBMhneKofrE&ab_channel=Mar%C3%ADaJos%C3%A9Apolo">video</a>. </li>
 
-            <li>Antes de comenzar, lee atentamente el <a class="link" (click)="open(mymodal)">consentimiento</a> y selecciona con un ticket la casilla si aceptas lo mencionado en dicho documento.</li>
-            
+            <li>Antes de comenzar, lee atentamente el <a class="link" (click)="open(mymodal)">consentimiento</a> y selecciona con un ticket la casilla si aceptas lo que aquí te mencionamos.</li>
+
             <li>Selecciona el botón “Comenzar” si autorizas el uso de tus respuestas para nuestro análisis.</li> 
+
+            <li>Si después de terminar de responder el cuestionario, quieres seguir participando, puedes volver en otro momento. Las preguntas aparecerán de manera aleatoria, por lo que es muy posible que respondas nuevas consultas, distintas de las que ya contestaste.</li>
+
+            <li>ATENCIÓN <b>(TRIGGER WARNING)</b>: los titulares pueden hacer referencia, en inglés, a hechos de connotación violenta de distinto tipo. </li>
+            
+
 
             </ul>
           </div>
@@ -45,12 +58,12 @@
           <div> 
             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click) = "changeTerms()">
             <label class="form-check-label" for="flexCheckChecked" >
-              Acepto los términos y condiciones de la encuesta. 
+              Acepto los términos y condiciones del estudio. 
             </label>
           </div>
       </div>
        <div style="display: flex; flex-direction: row-reverse;">
-        <button type="button" class="btn btn-primary" id="startForm" (click)="startForm()" [disabled] = "terms==false || consent==false"> Comenzar </button> <!--Default disabled-->
+        <button type="button" class="btn btn-primary" id="startForm" (click)="startForm()" [disabled] = "terms==false || consent==false"p> Comenzar </button> <!--Default disabled-->
       </div>
 
       </div>
@@ -60,12 +73,12 @@
         <div class="test-header">
 
         <a class="close" (click)="open(mymodal2)"><i class="fa-regular fa-rectangle-xmark fa-xl"></i></a>
-        <p style="font-weight: bold; font-size: 1.3rem;">
-          {{i + 1}}/{{data.length}}
+        <p style="font-weight: bold; font-size: 1rem;">
+          Preguntas respondidas: {{i}}
         </p>
         </div>
         <div class="flexbox slider">
-            <p style="font-size: 1.2rem;"> ¿Se refieren estos dos titulares de noticias al <b>mismo acontecimiento</b>? <br> 
+            <p style="font-size: 1.2rem;"> <b>¿Se refieren estos dos titulares de noticias al mismo acontecimiento</b>? <br> 
                 <!--<span style="font-size: 1rem;">Selecciona las palabras que determinaron tu decisión.</span> <br> !-->
 
                   <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">1 - {{data[i].sentence1}} <br>
@@ -120,8 +133,8 @@
     <div class="center-div" *ngIf="no_data == 2">
 
       <div class="flexbox slider" style="padding-bottom: 3rem;">
-        <p style="font-size: 1.2rem;"> La encuesta ha finalizado satisfactoriamente.</p><br> 
-          Agradecemos enormemente su participación en esta encuesta, ayudará a generar datos valiosos no solo para nuestro proyecto, sino para la investigación en esta área. <br> <br>
+        <p style="font-size: 1.2rem;"> El formulario ha sido enviado satisfactoriamente.</p><br> 
+          Agradecemos enormemente su participación en este estudio, ayudará a generar datos valiosos no solo para nuestro proyecto, sino para la investigación en esta área. <br> <br>
         Nuevamente, recordar que los resultados serán publicados por este mismo medio, cuya fecha de publicación estaremos notificando por nuestras redes sociales. <br> 
         <form>
           <div class="form-group" style="padding-top: 1rem;">
@@ -156,12 +169,11 @@
   <div class="modal-body">
     
 
-    <p>Usted ha sido invitado(a) a participar en la encuesta “Noticias” del Instituto Milenio Fundamentos de los Datos. El objetivo es desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias. Para participar en esta estudio, es importante que considere la siguiente información:  </p>
+    <p>Usted ha sido invitado(a) a participar en el estudio “Noticias” del Instituto Milenio Fundamentos de los Datos. El objetivo es desarrollar modelos que determinen el grado de similitud semántica entre distintos titulares de noticias. Para participar en esta estudio, es importante que considere la siguiente información:  </p>
     <ul>
     <li><b>Participación:</b> Su participación consistirá en responder un cuestionario web a través de la plataforma noticias.imfd.cl, hospedada en servidores del instituto. 
-    La encuesta consiste en mostrar al encuestado una serie de pares de titulares de noticias reales y que éste identifique si los titulares corresponden a exactamente el mismo evento, 
+    El estudio consiste en mostrar al encuestado una serie de pares de titulares de noticias reales y que éste identifique si los titulares corresponden a exactamente el mismo evento, 
     corresponden a eventos distintos o si no corresponden al mismo evento pero se refieren a tópicos estrechamente relacionados.</li>
-
     <li><b>Riesgos:</b> Las respuestas de los informantes, además de ser anónimas, no contienen datos privados o sensibles. Por tanto, se considera que no existen riesgos asociados. </li>
     <li><b>Beneficios:</b> Usted no recibirá ningún beneficio directo por participar en este estudio. No obstante, su participación permitirá generar información valiosa para el desarrollo de modelos predictivos de similitud semántica en sitios de noticias en inglés.</li>
     <li><b>Voluntariedad:</b> Su participación es absolutamente voluntaria. Usted tendrá la libertad de contestar las preguntas que desee, como también de detener su participación en cualquier momento que lo desee. Esto no implicará ningún perjuicio para usted.</li>
